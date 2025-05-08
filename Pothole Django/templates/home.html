@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}
+{% load thumbnail %}
+{% block body %}
+
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-sm-2 col-md-3">
+                    <div class="card my-4">
+                        {% thumbnail post.image "200x200" crop="center" as im %}
+                            <img src="{{ im.url }}" class="card-img-top" alt="...">
+                        {% endthumbnail %}
+                        <div class="card-body">
+                            <h2 class="card-title text-center">{{post.text}}</h2>
+                            <h4 class="card-title">Condition : {{post.condition}}</h4>
+                            <div class="d-flex justify-content-center">
+                                <a href="{% url 'feed:detail' post.id %}" class="btn btn-primary">View More</a>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+
+            {% empty %}
+                <div class="col-sm-6 offset-3 text-center py-4 my-5">
+                    <h3>Welcome!</h3>
+                    <p>Add Your First Image?</p>
+                    <a href="{% url 'feed:post' %}" class="btn btn-outline-primary ">Upload Image</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        
+{% endblock %}

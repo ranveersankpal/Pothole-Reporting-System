@@ -1,0 +1,13 @@
+{% extends "base2.html" %}
+
+{% block title %}Detail View{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-10 offset-sm-1 py-5">
+        <h3>{{object.text}}</h3>
+        <img src="{{ object.image.url }}" style="width: 100%; height: auto;">
+    </div>
+</div>
+    
+{% endblock %}
